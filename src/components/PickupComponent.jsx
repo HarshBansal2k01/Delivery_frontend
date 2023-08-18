@@ -137,15 +137,18 @@ function PickupComponent() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Pickup Details</h2>
       <form>
         <div>
-          <label htmlFor="name">Name:</label>
+          <label className="form-label" htmlFor="name">
+            Name:
+          </label>
           <input
             type="text"
             id="name"
             name="name"
+            className="form-control"
             value={formData.name}
             onChange={handleInputChange}
             required
@@ -162,9 +165,12 @@ function PickupComponent() {
             onChange={handleInputChange}
             readOnly={phoneReadOnly}
             required
+            className="form-control"
           />
-          <br />
-          <button onClick={handlePhoneCheck}>Check</button>
+
+          <button className="btn btn-info mt-2" onClick={handlePhoneCheck}>
+            Check
+          </button>
           <p>{phoneMsg}</p>
         </div>
         <div>
@@ -177,9 +183,12 @@ function PickupComponent() {
             onChange={handleInputChange}
             readOnly={emailReadOnly}
             required
+            className="form-control"
           />
-          <br />
-          <button onClick={handleEmailCheck}>Check</button>
+
+          <button className="btn btn-info mt-2" onClick={handleEmailCheck}>
+            Check
+          </button>
           <p>{emailMsg}</p>
         </div>
         <div>
@@ -192,9 +201,12 @@ function PickupComponent() {
             onChange={handleInputChange}
             readOnly={pincodeReadOnly}
             required
+            className="form-control"
           />
-          <br />
-          <button onClick={handlePincodeCheck}>Check</button>
+
+          <button className="btn btn-info mt-2" onClick={handlePincodeCheck}>
+            Check
+          </button>
           <p>{pincodeMsg}</p>
         </div>
         <div>
@@ -206,6 +218,7 @@ function PickupComponent() {
             value={formData.pickUpLocation}
             onChange={handleInputChange}
             required
+            className="form-control"
           />
         </div>
         <div>
@@ -217,9 +230,14 @@ function PickupComponent() {
             value={formData.preferredTime}
             required
             onChange={handleInputChange}
+            className="form-control"
           />
         </div>
-        <button onClick={handleClick} type="submit">
+        <button
+          className="btn btn-primary mt-2 mb-3"
+          onClick={handleClick}
+          type="submit"
+        >
           Submit
         </button>
       </form>

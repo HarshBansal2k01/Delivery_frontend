@@ -9,15 +9,18 @@ function Home() {
     setFormOption(e.target.value);
   };
   return (
-    <div style={{ textAlign: "center" }}>
+    <div className="container mt-2" style={{ textAlign: "center" }}>
       <div>
-        <label htmlFor="option">Choose Mode of Order:</label> <br />
+        <h6 htmlFor="option">Choose Mode of Order:</h6> <br />
+      </div>
+      <div>
         <select
           id="option"
           name="option"
           value={formOption}
           onChange={handleChange}
           required
+          className="form-control mb-3"
         >
           <option value="">Select an option</option>
           <option value="pickup">Pickup</option>

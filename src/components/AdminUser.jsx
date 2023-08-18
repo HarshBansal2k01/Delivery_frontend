@@ -18,12 +18,10 @@ function AdminUser() {
   };
 
   const handlePasswordSubmit = () => {
-
     if (password === "admin123") {
       setIsAdminAuthorized(true);
       setShowPasswordModal(false);
 
-  
       navigate("/updatedelete");
     } else {
       alert("Incorrect password. Please try again.");
@@ -31,58 +29,54 @@ function AdminUser() {
   };
 
   return (
-    <div style={{ textAlign: "center", margin: "20px" }}>
-      <h2>Choose User Type</h2>
+    <div className="container mt-3" style={{ textAlign: "center" }}>
+      <h2 className="mb-3">Choose User Type</h2>
       <button
         onClick={() => handleSelection("admin")}
-        style={{
-          backgroundColor: "#007bff",
-          color: "white",
-          padding: "10px 20px",
-          borderRadius: "5px",
-          marginRight: "10px",
-        }}
+        className="btn btn-dark mb-3"
       >
         Admin
       </button>
       <button
         onClick={() => handleSelection("user")}
-        style={{
-          backgroundColor: "#28a745",
-          color: "white",
-          padding: "10px 20px",
-          borderRadius: "5px",
-        }}
+        className="btn btn-warning mb-3 ms-2"
+       
       >
-        <Link to={"/home"}>User</Link>
+        <Link  style={{ textDecoration: "none" , color:"black"}} to={"/home"}>User</Link>
       </button>
 
-      {selectedType && (
-        <div style={{ marginTop: "20px", fontSize: "18px" }}>
-          You selected:{" "}
-          <span style={{ fontWeight: "bold" }}>{selectedType}</span>
-        </div>
-      )}
-
-      {showPasswordModal && (
-        <div className="password-modal">
-          <div className="password-modal-content">
-            <h3>Enter Admin Password</h3>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button onClick={handlePasswordSubmit}>Submit</button>
+      <div className="mb-3">
+        {selectedType && (
+          <div style={{ marginTop: "20px", fontSize: "18px" }}>
+            You selected:{" "}
+            <span style={{ fontWeight: "bold" }}>{selectedType}</span>
           </div>
+        )}
+        <div>
+          {showPasswordModal && (
+            <div>
+              <h3>Enter Admin Password</h3>
+              <div className="mb-3">
+                <input
+                  className="form-control"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <button className="btn btn-info" onClick={handlePasswordSubmit}>
+                Submit
+              </button>
+            </div>
+          )}
         </div>
-      )}
 
-      {isAdminAuthorized && (
-        <div style={{ marginTop: "20px", fontSize: "18px" }}>
-          You are authorized as an admin.
-        </div>
-      )}
+        {isAdminAuthorized && (
+          <div style={{ marginTop: "20px", fontSize: "18px" }}>
+            You are authorized as an admin.
+          </div>
+        )}
+      </div>
     </div>
   );
 }

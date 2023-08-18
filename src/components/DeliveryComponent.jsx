@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 function DeliveryComponent() {
-  
   const [emailReadOnly, setEmailReadOnly] = useState(false);
   const [phoneReadOnly, setPhoneReadOnly] = useState(false);
   const [pincodeReadOnly, setPincodeReadOnly] = useState(false);
@@ -31,9 +30,8 @@ function DeliveryComponent() {
       setEmailMsg(response.data.message);
       if (response.data.message === "Email found in the database") {
         setEmailReadOnly(true);
-      }
-      else{
-        setEmailReadOnly(false)
+      } else {
+        setEmailReadOnly(false);
       }
     } catch (error) {
       console.log(error);
@@ -50,11 +48,9 @@ function DeliveryComponent() {
       setPhoneMsg(response.data.message);
       if (response.data.message === "phone found in the database") {
         setPhoneReadOnly(true);
+      } else {
+        setPhoneReadOnly(false);
       }
-      else{
-        setPhoneReadOnly(false)
-      }
-  
     } catch (error) {
       console.log(error);
     }
@@ -70,11 +66,9 @@ function DeliveryComponent() {
       setPincodeMsg(response.data.message);
       if (response.data.message === "pincode found in the database") {
         setPincodeReadOnly(true);
+      } else {
+        setPincodeReadOnly(false);
       }
-      else{
-        setPincodeReadOnly(false)
-      }
-   
     } catch (error) {
       console.log(error);
     }
@@ -122,12 +116,15 @@ function DeliveryComponent() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Delivery Details</h2>
       <form>
         <div>
-          <label htmlFor="name">Name:</label>
+          <label className="form-label" htmlFor="name">
+            Name:
+          </label>
           <input
+            className="form-control"
             type="text"
             id="name"
             name="name"
@@ -137,8 +134,11 @@ function DeliveryComponent() {
           />
         </div>
         <div>
-          <label htmlFor="phone">Phone:</label>
+          <label className="form-label" htmlFor="phone">
+            Phone:
+          </label>
           <input
+            className="form-control"
             type="text"
             id="phone"
             name="phone"
@@ -147,13 +147,17 @@ function DeliveryComponent() {
             readOnly={phoneReadOnly}
             required
           />
-          <br />
-          <button onClick={handlePhoneCheck} >Check</button>
+          <button className="btn btn-info mt-2" onClick={handlePhoneCheck}>
+            Check
+          </button>
           <p>{phoneMsg}</p>
         </div>
         <div>
-          <label htmlFor="email">Email:</label>
+          <label className="form-label" htmlFor="email">
+            Email:
+          </label>
           <input
+            className="form-control"
             type="email"
             id="email"
             name="email"
@@ -162,14 +166,18 @@ function DeliveryComponent() {
             readOnly={emailReadOnly}
             required
           />
-          <br />
-          <button onClick={handleEmailCheck}>Check</button>
+          <button className="btn btn-info mt-2" onClick={handleEmailCheck}>
+            Check
+          </button>
           <p>{emailMsg}</p>
         </div>
 
         <div>
-          <label htmlFor="address">Address:</label>
+          <label className="form-label" htmlFor="address">
+            Address:
+          </label>
           <input
+            className="form-control"
             type="text"
             id="address"
             name="address"
@@ -179,8 +187,11 @@ function DeliveryComponent() {
           />
         </div>
         <div>
-          <label htmlFor="pincode">Pincode:</label>
+          <label className="form-label" htmlFor="pincode">
+            Pincode:
+          </label>
           <input
+            className="form-control"
             type="number"
             id="pincode"
             name="pincode"
@@ -189,11 +200,16 @@ function DeliveryComponent() {
             value={formData.pincode}
             readOnly={pincodeReadOnly}
           />
-          <br />
-          <button onClick={handlePincodeCheck}>Check</button>
+          <button className="btn btn-info mt-2" onClick={handlePincodeCheck}>
+            Check
+          </button>
           <p>{pincodeMsg}</p>
         </div>
-        <button onClick={handleClick} type="submit">
+        <button
+          className="btn btn-primary mt-2 mb-3"
+          onClick={handleClick}
+          type="submit"
+        >
           Submit
         </button>
       </form>

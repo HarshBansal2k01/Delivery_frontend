@@ -46,6 +46,7 @@ function UpdateUser() {
     }
   };
   return (
+    <div>
     <div style={{ textAlign: "center", marginTop: "10px" }}>
       <h1>User List</h1>
       {users.map((user) => (
@@ -56,11 +57,16 @@ function UpdateUser() {
           </h3>
         </div>
       ))}
+      </div>
+      
+      <form className="container">
       <h2>Update Details</h2>
-      <form action="">
-        <div>
-          <label htmlFor="phone">Phone:</label>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="phone">
+            Phone:
+          </label>
           <input
+            className="form-control"
             type="tel"
             id="phone"
             name="phone"
@@ -70,9 +76,12 @@ function UpdateUser() {
             required
           />
         </div>
-        <div>
-          <label htmlFor="email">Email:</label>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="email">
+            Email:
+          </label>
           <input
+            className="form-control"
             type="email"
             id="email"
             name="email"
@@ -81,9 +90,12 @@ function UpdateUser() {
             required
           />
         </div>
-        <div>
-          <label htmlFor="pincode">Pincode:</label>
+        <div className="mb-3">
+          <label className="form-label" htmlFor="pincode">
+            Pincode:
+          </label>
           <input
+            className="form-control"
             type="text"
             id="pincode"
             name="pincode"
@@ -92,7 +104,7 @@ function UpdateUser() {
             required
           />
         </div>
-        <button onClick={handleClick}>Update</button>
+        <button className="btn btn-primary" onClick={handleClick}>Update</button>
       </form>
     </div>
   );
