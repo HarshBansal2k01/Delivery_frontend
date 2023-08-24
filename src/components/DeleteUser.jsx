@@ -4,13 +4,34 @@ import axios from "axios";
 function DeleteUser() {
   const [email, setEmail] = useState("");
   const [users, setUsers] = useState([]);
+
+  // const handleDelete = async (email) => {
+  //   try {
+  //     await axios.delete("http://localhost:8800/delete/" + email);
+  //     alert("User Deleted");
+  //     window.location.reload();
+  //   } catch (err) {
+  //     alert("Not Deleted");
+  //     console.log(err);
+  //   }
+  // };
+
   const handleDelete = async (email) => {
     try {
-      await axios.delete("http://localhost:8800/delete/" + email);
-      alert("User Deleted");
-      window.location.reload();
+      const response = await axios.delete(
+        "http://localhost:8800/delete/" + email
+      );
+
+      if (response.status === 200) {
+        alert("User Deleted");
+        window.location.reload();
+      } else if (response.status === 404) {
+        alert("User not found.");
+      } else {
+        alert("An error occurred while deleting the user.");
+      }
     } catch (err) {
-      alert("Not Deleted");
+      alert("An error occurred while deleting the user.");
       console.log(err);
     }
   };
